@@ -1,0 +1,168 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --color-primary: #c8a96e;
+  --color-secondary: #1a1a1a;
+  --color-accent: #f5e6d3;
+  --color-text: #2d2d2d;
+  --color-background: #fff9f5;
+  --color-nav-bg: #1a1a1a;
+  --color-footer-bg: #1a1a1a;
+  --font-display: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --radius: 4px;
+  --shadow: 0 2px 20px rgba(0,0,0,0.08);
+  --shadow-hover: 0 8px 40px rgba(0,0,0,0.15);
+  --transition: all 0.3s ease;
+  --max-width: 1280px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--color-background);
+  color: var(--color-text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; height: auto; display: block; }
+button { cursor: pointer; border: none; outline: none; font-family: var(--font-body); }
+input, textarea, select { font-family: var(--font-body); outline: none; }
+
+.container { max-width: var(--max-width); margin: 0 auto; padding: 0 20px; }
+
+/* Buttons */
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-primary:hover { background: #b8945a; transform: translateY(-1px); box-shadow: 0 4px 15px rgba(200,169,110,0.4); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--color-secondary);
+  padding: 11px 28px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 2px solid var(--color-secondary);
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-secondary:hover { background: var(--color-secondary); color: #fff; }
+
+.btn-outline-gold {
+  background: transparent;
+  color: var(--color-primary);
+  padding: 11px 28px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 2px solid var(--color-primary);
+  transition: var(--transition);
+}
+.btn-outline-gold:hover { background: var(--color-primary); color: #fff; }
+
+/* Section Headers */
+.section-header { text-align: center; margin-bottom: 48px; }
+.section-header h2 { font-family: var(--font-display); font-size: 2.2rem; color: var(--color-secondary); margin-bottom: 12px; }
+.section-header p { color: #777; font-size: 1rem; max-width: 500px; margin: 0 auto; }
+.section-header .divider { width: 60px; height: 3px; background: var(--color-primary); margin: 16px auto 0; border-radius: 2px; }
+
+/* Product Card */
+.product-card {
+  background: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  position: relative;
+}
+.product-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.product-card .image-wrap { position: relative; overflow: hidden; aspect-ratio: 3/4; }
+.product-card .image-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.product-card:hover .image-wrap img { transform: scale(1.06); }
+.product-card .badge { position: absolute; top: 12px; left: 12px; background: var(--color-primary); color: #fff; font-size: 0.72rem; font-weight: 600; padding: 4px 10px; border-radius: 3px; letter-spacing: 0.5px; }
+.product-card .badge.sale { background: #e74c3c; }
+.product-card .card-body { padding: 16px; }
+.product-card .card-body h3 { font-size: 0.95rem; font-weight: 600; color: var(--color-secondary); margin-bottom: 6px; line-height: 1.4; }
+.product-card .card-body .price { font-size: 1.05rem; font-weight: 700; color: var(--color-primary); }
+.product-card .card-body .price .compare { font-size: 0.85rem; color: #aaa; text-decoration: line-through; margin-left: 8px; font-weight: 400; }
+.product-card .card-actions { padding: 0 16px 16px; display: flex; gap: 8px; }
+
+/* Grid */
+.products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 24px; }
+@media (max-width: 640px) { .products-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; } }
+
+/* Form Inputs */
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; font-size: 0.875rem; font-weight: 500; color: var(--color-text); margin-bottom: 6px; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1.5px solid #e0d6cc;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+  background: #fff;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--color-primary); }
+
+/* Loading Spinner */
+.spinner { width: 40px; height: 40px; border: 3px solid #f3efe8; border-top-color: var(--color-primary); border-radius: 50%; animation: spin 0.8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.loading-center { display: flex; justify-content: center; align-items: center; min-height: 200px; }
+
+/* WhatsApp Button */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #25d366;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  z-index: 999;
+  transition: var(--transition);
+}
+.whatsapp-float:hover { transform: scale(1.1); }
+
+/* Toast override */
+.Toastify__toast { border-radius: 8px !important; font-family: var(--font-body) !important; }
+
+/* Breadcrumb */
+.breadcrumb { display: flex; align-items: center; gap: 8px; font-size: 0.85rem; color: #888; padding: 12px 0; }
+.breadcrumb a { color: var(--color-primary); }
+.breadcrumb span { color: #ccc; }
+
+/* Page hero */
+.page-hero { background: var(--color-secondary); color: #fff; padding: 48px 0; text-align: center; }
+.page-hero h1 { font-family: var(--font-display); font-size: 2.5rem; margin-bottom: 8px; }
+.page-hero p { color: #aaa; font-size: 1rem; }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section-header h2 { font-size: 1.7rem; }
+  .page-hero h1 { font-size: 1.8rem; }
+}
